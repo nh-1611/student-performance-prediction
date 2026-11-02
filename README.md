@@ -1,1 +1,1 @@
-# student-performance-prediction
+# Nonparametric student performance analysis and prediction
