@@ -4,7 +4,8 @@ English version: [README.md](README.md)
 
 *Student Performance Factors*: https://www.kaggle.com/datasets/lainguyn123/student-performance-factors/data
 
-<img width="1325" height="742" alt="image" src="https://github.com/user-attachments/assets/3d2f9e80-ef58-4570-ac07-49a69250c8f3" />
+<img width="1320" height="737" alt="image" src="https://github.com/user-attachments/assets/c0faff0e-81ab-47d5-a0d4-4bedccfc5352" />
+
 
 *Liczba Badanych Uczniów (6 378) na dashboardzie jest mniejsza niż liczba obserwacji (6 607) w analizie, ponieważ do dashboardu nie wprowadzono imputacji braków danych, zostały one usunięte.*
 
