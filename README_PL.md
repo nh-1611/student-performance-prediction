@@ -208,7 +208,7 @@ Najlepsze wyniki według wszystkich kryteriów osiąga model bazowy, czyli **reg
 
 Regresja liniowa nie tylko generuje najniższe błędy predykcji, ale oferuje też **pełną interpretowalność współczynników**, co czyni ją optymalnym wyborem biznesowym i badawczym.
 
-Dodatkowo, mimo próby dostrojenia hiperparametrów dla drugiego najlepszego modelu (Gradient Boosting), jego **wyniki nadal pozostały gorsze niż wyniki dla regresji liniowej** (`R2`: 0,6711 vs 0,6952, `RMSE`: 2,3690 vs 2,2804, `MSE`: 0,7625 vs 0,5218).
+Dodatkowo, mimo próby dostrojenia hiperparametrów dla drugiego najlepszego modelu (Gradient Boosting), jego **wyniki nadal pozostały gorsze niż wyniki dla regresji liniowej** (`R2`: 0,6711 vs 0,6952, `RMSE`: 2,3690 vs 2,2804, `MAE`: 0,7625 vs 0,5218).
 
 ---
 
