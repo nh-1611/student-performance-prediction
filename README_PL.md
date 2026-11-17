@@ -4,6 +4,10 @@ English version: [README.md](README.md)
 
 *Student Performance Factors*: https://www.kaggle.com/datasets/lainguyn123/student-performance-factors/data
 
+<img width="1325" height="742" alt="image" src="https://github.com/user-attachments/assets/3d2f9e80-ef58-4570-ac07-49a69250c8f3" />
+
+*Liczba Badanych Uczniów (6 378) na dashboardzie jest mniejsza niż liczba obserwacji (6 607) w analizie, ponieważ do dashboardu nie wprowadzono imputacji braków danych, zostały one usunięte.*
+
 ## O projekcie
 
 Projekt skupia się na nieparametrycznej i ekonometrycznej analizie zależności między wynikami w nauce a czynnikami potencjalnie na nie wpływającymi oraz budowie modelu uczenia maszynowego przewidującego wyniki z egzaminu. Badanie przeprowadzono na próbie 6 607 obserwacji. Analiza łączy w sobie kompleksowe czyszczenie danych, eksploracyjną analizę statystyk opisowych, testowanie założeń o normalności i jednorodności wariancji wymaganych do ANOVA, nieparametryczne testy U Manna-Whitneya, Kruskala-Wallisa z testami post-hoc, badanie korelacji oraz budowę i ewaluację modeli predykcyjnych.
@@ -28,11 +32,18 @@ Projekt skupia się na nieparametrycznej i ekonometrycznej analizie zależności
 
 **Najważniejsze wnioski:**
 
-
+* Płeć, godziny snu i typ szkoły nie wpływają na wyniki w nauce.
+* Wykryto zależności między wynikami z egzaminu a poziomem motywacji, dostępem do internetu, dostępem do zasobów edukacyjnych czy dochodami rodziców.
+* Obecność skrajnych wyników, które pogarszają jakość modeli.
+* Silnie liniowy charakter próby.
 
 **Zawartość repozytorium:**
 
-Jak uruchomić: pip install -r `requirements.txt`, następnie notebook: 
+student_performance.ipynb: czyszczenie i przygotowanie danych, eksploracyjna analiza danych, weryfikacja założeń, testy statystyczne, modelowanie, interpretacja 
+student_performance_dashboard_pl.pbix: dashboard analityczny w Power BI
+requirements.txt: biblioteki
+
+Jak uruchomić: pip install -r `requirements.txt`, następnie notebook: `student_performance.ipynb`
 
 ---
 
@@ -223,6 +234,7 @@ Największy negatywny wpływ na wyniki egzaminu ma **niski poziom dostępu do za
 
 > * **Do wyższych wyników** w nauce w dużym stopniu przyczyniają się **dostęp do internetu, pozytywny wpływ rówieśników oraz mały dystans do domu.** Nieobojętny jest też dostęp do zasobów edukacyjnych oraz zaangażowanie rodziców.
 > * **Niższe wyniki** wiążą się między innymi z **brakiem motywacji czy niskim dostępie do zasobów i internetu.**
+> * * Płeć, godziny snu i typ szkoły nie wpływają na wyniki w nauce.
 > * Wbrew przypuszczeniom zakładającym przewagę zaawansowanych algorytmów, **klasyczna regresja liniowa osiągnęła najlepsze rezultaty**, potwierdzając silnie **liniowy charakter** relacji w badanej próbie uczniów.
 > * Przy tak dużej próbie (n = 6 607) **testy statystyczne wykazały ekstremalną czułość**, różnice istotne statystycznie często nie przekładały się na duże różnice w wartościach median, które dla większości podgrup oscylowały wokół 67 punktów.
 
