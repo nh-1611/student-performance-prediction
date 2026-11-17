@@ -28,6 +28,8 @@ Projekt skupia się na nieparametrycznej i ekonometrycznej analizie zależności
 
 **Najważniejsze wnioski:**
 
+
+
 **Zawartość repozytorium:**
 
 Jak uruchomić: pip install -r `requirements.txt`, następnie notebook: 
@@ -184,11 +186,11 @@ Przed modelowaniem wykluczono **nieistotne zmienne**, czyli `Sleep_Hours`, `Gend
 
 | Metryka | Regresja liniowa | Random Forest | Gradient Boosting |
 | :--- | :---: | :---: | :---: |
-| R^2 | 0,6952 | 0,5945 | 0,5218 |
-| RMSE | 2,2804 | 2,6305 | 1,2119 |
-| MAE | 0,5218 | 2,4209 | 0,8472 |
+| R^2 | 0,6952 | 0,5945 | 0,6565 |
+| RMSE | 2,2804 | 2,6305 | 2,4209 |
+| MAE | 0,5218 | 1,2119 | 0,8472 |
 
-Najlepsze wyniki według wszystkich kryteriów osiąga model bazowy, czyli **regresja liniowa.** Zdobywa **najwyższy współczynnik determinacji** `R2` (0,7697 vs 0,6555 vs 0,7186) oraz **najniższy błąd średniokwadratowy `RMSE`** (1,8043 vs 2,2069 vs 1,9944) i **najniższy średni błąd bezwględny `MAE`** (0,4495 vs 1,1485 vs 0,7731). 
+Najlepsze wyniki według wszystkich kryteriów osiąga model bazowy, czyli **regresja liniowa.** Zdobywa **najwyższy współczynnik determinacji** `R2` (0,6952 vs 0,5945 vs 0,6565) oraz **najniższy błąd średniokwadratowy `RMSE`** (2,2804 vs 2,6305 vs 2,4209) i **najniższy średni błąd bezwględny `MAE`** (0,5218 vs 1,2119 vs 0,8472). 
 
 > * Wyższość regresji liniowej nad modelami opartymi na drzewach decyzyjnych (Random Forest, Gradient Boosting) potwierdza, że relacje pomiędzy zmiennymi objaśniającymi a wynikiem egzaminu mają **charakter silnie liniowy**. W tym przypadku złożone algorytmy nieliniowe miały tendencję do nadmiernego dopasowania (*overfittingu*) na zbiorze treningowym.
 > * Analiza wizualna wykresów ujawnia powtarzalny wzorzec dla wszystkich trzech modeli, jakim jest **wyraźne niedoszacowanie wyników w prawym górnym rogu** (dla uczniów ze skrajnie wysokimi wynikami powyżej 80-90 punktów). Oznacza to, że żaden z modeli nie uchwycił w pełni specyfiki nieliniowego „sufitu” dla najlepszych osiągnięć.
@@ -211,7 +213,7 @@ Największy negatywny wpływ na wyniki egzaminu ma **niski poziom dostępu do za
 > * Uczniowie o niskim poziomie zaangażowania rodziców w ich edukację osiągają średnio o 1,9 punktu mniej z egzaminu niż osoby, których rodzice wykazują duże zaangażowanie w ich naukę, przy założeniu *ceteris paribus*.
 > * Niezmotywowani do nauki uczniowie zdobywają średnio o 1,1 punktu mniej z egzaminu niż ci zmotywowani, przy założeniu *ceteris paribus*.
 
-**Najmniejszy wpływ na wynik mają poprzednie wyniki, aktywność fizyczna i frekwencja.**
+**Najmniejszy wpływ na wynik według modelu regresji liniowej mają poprzednie wyniki, aktywność fizyczna i frekwencja**, mimo jej dużego współczynnika korelacji ze zmienną.
 
 ---
 
@@ -219,8 +221,31 @@ Największy negatywny wpływ na wyniki egzaminu ma **niski poziom dostępu do za
 
 ### Kluczowe wnioski
 
+> * **Do wyższych wyników** w nauce w dużym stopniu przyczyniają się **dostęp do internetu, pozytywny wpływ rówieśników oraz mały dystans do domu.** Nieobojętny jest też dostęp do zasobów edukacyjnych oraz zaangażowanie rodziców.
+> * **Niższe wyniki** wiążą się między innymi z **brakiem motywacji czy niskim dostępie do zasobów i internetu.**
+> * Wbrew przypuszczeniom zakładającym przewagę zaawansowanych algorytmów, **klasyczna regresja liniowa osiągnęła najlepsze rezultaty**, potwierdzając silnie **liniowy charakter** relacji w badanej próbie uczniów.
+> * Przy tak dużej próbie (n = 6 607) **testy statystyczne wykazały ekstremalną czułość**, różnice istotne statystycznie często nie przekładały się na duże różnice w wartościach median, które dla większości podgrup oscylowały wokół 67 punktów.
+
 ### Rekomendacje
+
+> * **Wyrównywanie szans i zasobów:** Instytucje edukacyjne powinny priorytetowo wspierać uczniów z ograniczonym dostępem do materiałów i internetu, ponieważ braki te korelują z największymi stratami punktowymi (sięgającymi 2 punktów).
+> * **Wsparcie zaangażowania i motywacji:** Programy naprawcze i opiekuńcze powinny skupiać się na aktywizowaniu rodziców oraz budowaniu motywacji uczniów do samodzielnej nauki.
+> * **Monitoring środowiska rówieśniczego:** Należy zwracać uwagę na grupy zgłaszające negatywny wpływu otoczenia rówieśniczego oraz wspierać uczniów pokonujących duże odległości do szkoły.
 
 ### Ograniczenia
 
+> * **Syntetyczny charakter danych:** Analizowany zbiór ma charakter syntetyczny, co oznacza, że wygenerowane relacje i struktura danych mogą odbiegać od pełnej złożoności i naturalnego szumu występującego w realnych procesach edukacyjnych.
+> * **Problematyka skrajnych wyników:** Modele predykcyjne wykazują powtarzalną tendencję do niedoszacowania wartości w przypadku uczniów osiągających skrajnie wysokie, odstające wyniki w prawym ogonie rozkładu, co utrudnia pełne odwzorowanie najlepszych rezultatów.
+> * **Potencjalny wyciek danych (*data leakage*):** Imputacja braków danych z wykorzystaniem metody MICE została przeprowadzona na całym zbiorze przed podziałem na część treningową i testową, co mogło w niewielkim stopniu wpłynąć na optymistyczne szacunki metryk modeli.
+> * **Metodologia testów statystycznych:** Przy tak dużej próbie (n = 6 607) weryfikacja wariancji i średnich mogłaby opierać się na klasycznej analizie wariancji (ANOVA) ze względu na właściwości Centralnego Twierdzenia Granicznego. Wybór testów nieparametrycznych miał jednak charakter celowego zabiegu demonstracyjnego i eksploracyjnego.
+> * **Brak zaawansowanych miar:** W obecnej wersji projektu pominięto obliczanie miar wielkości efektu (*effect size*) dla testów statystycznych, opierając się głównie na klasycznych współczynnikach regresji i korelacji Spearmana.
+> * **Brak zaawansowanych miar i interpretowalności:** W obecnej wersji projektu pominięto obliczanie miar wielkości efektu (*effect size*) dla testów statystycznych oraz zastosowanie zaawansowanych algorytmów wyjaśnialności modeli typu SHAP (*SHapley Additive exPlanations*), opierając się głównie na klasycznych współczynnikach regresji i korelacji Spearmana.
+
 ### Dalsze kroki
+
+> * **Pogłębiona walidacja modeli:** Przejście od prostej budowy i ewaluacji do bardziej rygorystycznych procedur walidacyjnych, takich jak wielokrotna walidacja krzyżowa (*k-fold cross-validation*) z uwzględnieniem imputacji danych ściśle wewnątrz pętli treningowej.
+> * **Systematyczna selekcja zmiennych:** Wdrożenie zaawansowanych technik selekcji cech w celu optymalizacji struktury modelu.
+> * **Rozbudowa interpretowalności**: Zaimplementowanie metod analizy SHAP do oceny zarówno globalnego, jak i lokalnego wpływu poszczególnych zmiennych na predykcje algorytmów.
+> * **Analiza wielkości efektu:** Uzupełnienie statystyk nieparametrycznych o miary wielkości efektu, co pozwoliłoby precyzyjniej odróżnić istotność statystyczną wymuszoną dużą próbną od realnego znaczenia praktycznego zjawisk.
+
+---
