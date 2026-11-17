@@ -5,6 +5,7 @@ Polish version: [README_PL.md](README_PL.md)
 *Student Performance Factors*: https://www.kaggle.com/datasets/lainguyn123/student-performance-factors/data
 
 <img width="1320" height="737" alt="image" src="https://github.com/user-attachments/assets/a138c8fa-3b07-4403-aaab-b22feed15e96" />
+
 *The number of surveyed students on the dashboard (6,378) is lower than the total number of observations in the analysis (6,607) because missing data imputation was not applied to the dashboard dataset; instead, records with missing values were removed.*
 
 ## About the Project
